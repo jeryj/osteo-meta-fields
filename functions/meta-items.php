@@ -71,6 +71,8 @@ function getItem($field, $options) {
             (isset($itemField['options']) ? $itemOpts = $itemField['options'] : $itemOpts = NULL);
             // Args for loop
             (isset($itemField['args']) ? $itemArgs = $itemField['args'] : $itemArgs = NULL);
+            // When Args are set, we might have a secondary type (like radio, or dropdown)
+            (isset($itemField['secondary_type']) ? $itemSecondaryType= $itemField['secondary_type'] : $itemSecondaryType= NULL);
 
             // clear the array
             $itemOptions = '';
@@ -88,6 +90,7 @@ function getItem($field, $options) {
                                     'options' => $itemOpts,
                                     // args for Loop
                                     'args' => $itemArgs,
+                                    'secondary_type' => $itemSecondaryType,
                                 );
             ?>
             <?php

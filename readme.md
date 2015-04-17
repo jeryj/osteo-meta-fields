@@ -192,5 +192,5 @@ ROADMAP
 
 BUGS
 ==============
-- Having multiple image fields on meta items doesn't work so well
-- Loop won't work with radio or dropdown
+- FIXED: 4/17/2015 Having multiple image fields on meta items doesn't work so well
+- FIXED: 4/17/2015 Loop won't work with radio or dropdown
