@@ -295,6 +295,17 @@ function metaIcon($field, $options) {
     echo '</div>';
 }
 
+// Don't worry about setting metaField data=>'option'
+function metaOption($field, $options = array()) {
+    // set it to be data option
+    $defaultOptions = array('data' => 'option');
+    //merge the array
+    $options = array_merge($defaultOptions, $options);
+    // pass it on to the metaField for processing
+    metaField($field, $options);
+
+}
+
 function metaSave($field, $options = array() ) {
     $defaultOptions = array(
                             'required' => false, // array of required field data titles. ex - array('_metaKey', '_anotherRequiredKey');
