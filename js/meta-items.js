@@ -46,9 +46,6 @@ jQuery( document ).ready( function( $ ) {
             new_item = $(this).parent().parent().clone();
         }
 
-        console.log('clone_eq = '+clone_eq);
-        console.log('clone_source = '+clone_source);
-
         // clear all the values of the cloned item
         new_item.each(function() {
             clearValues(clone_source, new_item);
@@ -86,16 +83,17 @@ jQuery( document ).ready( function( $ ) {
                 // don't clear the value for buttons (like the select image button for image uploader)
                 // breaks out of this loop and continues on to the next one
                 return true;
+
+            } else if( $(this).prop('type') === 'checkbox' || $(this).prop('type') === 'radio') {
+                // we don't want to remove the values for the checkbox or radio, because then they can't save.
+                // Just remove the checked attribute
+                $(this).removeAttr('checked');
             } else {
-                if($(this).hasClass('icon-dropdown')) {
-                    // if the icon grid is there, remove the selected icon
-                    $('.icon-grid li', the_clone).removeClass('selected');
-                }
 
                 $(this).val('');
-                // if a checkbox
-                $(this).removeAttr('checked');
+
             }
+
             // replace the name with the new number
             new_array_name = $(this).attr('name').replace(clone_source, clone_eq);
 
@@ -103,6 +101,12 @@ jQuery( document ).ready( function( $ ) {
             $(this).attr('name', new_array_name);
 
         });
+
+        // if the icon grid is there, remove the selected class
+        $('.icon-grid li', the_clone).removeClass('selected');
+
+        // remove the thumbs
+        $('#thumbs .thumb', the_clone).remove();
     }
 
     function increaseFollowing(clone_eq, the_clone) {
@@ -121,8 +125,6 @@ jQuery( document ).ready( function( $ ) {
                     new_array_name = $(this).attr('name').replace(i, new_item_num);
                     $(this).attr('name', new_array_name);
 
-                    // if the icon grid is there, remove the selected class
-                    $('.icon-grid li', this).addClass('selected');
                 }
             });
 
@@ -158,8 +160,6 @@ jQuery( document ).ready( function( $ ) {
             imageID = $(this).attr('id');
             newImageID = imageID.replace(clone_source, clone_eq_string);
             $(this).attr('id', newImageID);
-            // remove the thumbs
-            $('#thumbs .thumb', this).remove();
         });
     }
 
