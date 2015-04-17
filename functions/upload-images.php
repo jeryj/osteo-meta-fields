@@ -7,7 +7,7 @@
 // $artists_meta['_artistsFeaturedIMG'] = $_POST['_artistsFeaturedIMG'];
 // $artists_meta['_artistsImages'] = $_POST['_artistsImages'];
 
-*/
+
 
 function sectionImages($the_section) {
     // Enqueue styles
@@ -64,4 +64,6 @@ function singleImageURL($the_section) {
         <input type="button" class="button upload_attachments_button" value="Select Image" />
     </div>
 <?php
+
 }
+*/

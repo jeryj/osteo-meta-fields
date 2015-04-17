@@ -17,18 +17,20 @@ jQuery( document ).ready( function( $ ) {
         the_chosen_one = $('#'+the_section + ' .featured_id').val();
 
         // If the media frame already exists, reopen it.
+
+        /* REMOVED because if there were multiple on one page it was opening the previous modal and not a new one
         if ( file_frame ) {
           file_frame.open();
           return;
-        }
+        }*/
 
         //If the button was for a single upload, then set the multiple to false
         if( $(this).parent().hasClass('single-image') ) {
-            var multipleOption = false;
-            var selectorTitle = 'Select the Image';
+            multipleOption = false;
+            selectorTitle = 'Select the Image';
         } else {
-            var multipleOption = true;
-            var selectorTitle = 'Select the Images';
+            multipleOption = true;
+            selectorTitle = 'Select the Images';
         }
 
         console.log('multipleOption is '+multipleOption);

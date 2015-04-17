@@ -92,8 +92,7 @@ function getItem($field, $options) {
             ?>
             <?php
 
-            if($itemType == 'images') :
-                (isset($itemField['single-image']) ? $itemOptions['single-image'] = $itemField['single-image'] : '');
+            if($itemType == 'images' || $itemType == 'image') :
                 $itemOptions['og_field'] = $field;
                 $itemOptions['i'] = $item_id;
                 (isset($value[$itemField["dataname"].'FeaturedIMG']) ? $itemOptions['featured_value'] = $value[$itemField["dataname"].'FeaturedIMG'] : $itemOptions['featured_value'] = '');

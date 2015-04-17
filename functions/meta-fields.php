@@ -8,7 +8,7 @@ function metaField($field, $options = array() ) {
     $defaultOptions = array(
                             'title' => null, // title for the field(s)
                             'description' => null, // enter a description
-                            'type' => 'input', // checkbox, dropdown, select, images, editor
+                            'type' => 'input', // checkbox, dropdown, select, images, image, editor, loop
                             'class' => null, // pass a class if you want to
                             'options' => null, // array('value'=>'yes', 'description'=>'Of Course!')
                                                 // for use with checkboxes, dropdowns, selects
@@ -68,7 +68,10 @@ function whichField($field, $options) {
     elseif($options['type'] == 'loop') :
         metaLoop($field, $options);
     elseif($options['type'] == 'images') :
-        metaImage($field, $options);
+        metaImages($field, $options);
+    elseif($options['type'] == 'image') :
+        $single = true;
+        metaImages($field, $options, $single);
     elseif($options['type'] == 'icon') :
         metaIcon($field, $options);
     endif;
@@ -174,7 +177,7 @@ function metaLoop($field, $options) {
     endif;
 }
 
-function metaImage($field, $options, $single = false) {
+function metaImages($field, $options, $single = false) {
     wp_enqueue_style( 'mp-meta-icons', plugins_url('mp-meta-fields/icons/style.css') );
     wp_enqueue_style( 'mp-meta-styles', plugins_url('mp-meta-fields/css/mp-meta-styles.css') );
     wp_enqueue_script( 'mp-image-uploader', plugins_url('mp-meta-fields/js/image-uploader.js'), array(), '20120206', true );

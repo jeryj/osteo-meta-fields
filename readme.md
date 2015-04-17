@@ -17,7 +17,7 @@ Pass the options you want to the metaField($field, $options) function to creat t
     $defaultOptions = array(
                     'title' => null, // title for the field(s)
                     'description' => null, // enter a description
-                    'type' => 'input', // checkbox, dropdown, select, images, textarea, loop
+                    'type' => 'input', // checkbox, dropdown, select, images, image, textarea, loop
                     'options' => null, // An array of fields for checkboxes, dropdowns, selects, etc:
                                         // array('value'=>'yes', 'description'=>'Of Course!')
                     'required' => false, // for displaying the red *. still need to define it as required when
@@ -175,7 +175,9 @@ Now, let's save it with the title field as required.
 ROADMAP
 =============
 
-- istead of single-image => true, just make a new field type called image or single image.
+- DONE: instead of single-image => true, just make a new field type called image or single image.
+------ Now it's type => 'image' for single and type => 'images' for multiples
+
 
 - remove all the single-image i, og-field, etc stuff and just explode the fieldname = $field[i][dataname] into fieldname-i-dataname
 
@@ -186,3 +188,9 @@ ROADMAP
 - meta-items.js for terms?
 
 - Look into this whole Classes thing.
+
+
+BUGS
+==============
+- Having multiple image fields on meta items doesn't work so well
+- Loop won't work with radio or dropdown
