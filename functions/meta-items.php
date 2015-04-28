@@ -73,6 +73,7 @@ function getItem($field, $options) {
             (isset($itemField['args']) ? $itemArgs = $itemField['args'] : $itemArgs = NULL);
             // When Args are set, we might have a secondary type (like radio, or dropdown)
             (isset($itemField['secondary_type']) ? $itemSecondaryType= $itemField['secondary_type'] : $itemSecondaryType= NULL);
+            (isset($itemField['taxonomy']) ? $itemTaxonomy = $itemField['taxonomy'] : $itemTaxonomy = NULL);
 
             // clear the array
             $itemOptions = '';
@@ -91,6 +92,7 @@ function getItem($field, $options) {
                                     // args for Loop
                                     'args' => $itemArgs,
                                     'secondary_type' => $itemSecondaryType,
+                                    'taxonomy' => $itemTaxonomy,
                                 );
             ?>
             <?php

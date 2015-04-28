@@ -8,16 +8,17 @@ function metaField($field, $options = array() ) {
     $defaultOptions = array(
                             'title' => null, // title for the field(s)
                             'description' => null, // enter a description
-                            'type' => 'input', // checkbox, dropdown, select, images, image, editor, loop
+                            'type' => 'input', // checkbox, dropdown, select, images, image, editor, loop, terms
                             'class' => null, // pass a class if you want to
                             'options' => null, // array('value'=>'yes', 'description'=>'Of Course!')
                                                 // for use with checkboxes, dropdowns, selects
                             'required' => false, // for displaying the red *. still need to define it as required when saving in metaSave()
                             'data' => 'post_meta', // option, term
                             'args' => false, // pass WP_Query args if needed
-                            'secondary_type' => null, // dropdown, radio, checkbox. For use with Loop
+                            'secondary_type' => null, // dropdown, radio, checkbox. For use with Loop or Terms
                             'style' => false, // an array of any style attribute that might go with that field.
                                                 // like, cols or size or width or height. Only used some places
+                            'taxonomy' => false, // a string or array of taxonomies for use with terms type
                             'value' => null, // set the value if necessary. we'll set it later anyways.
                             'meta-items' => null // for some instances (we're looking at you images) when we need to know if it's from the meta-items functions
                             );
@@ -67,6 +68,8 @@ function whichField($field, $options) {
         metaRadio($field, $options);
     elseif($options['type'] == 'loop') :
         metaLoop($field, $options);
+    elseif($options['type'] == 'terms') :
+        metaTerms($field, $options);
     elseif($options['type'] == 'images') :
         metaImages($field, $options);
     elseif($options['type'] == 'image') :
@@ -167,6 +170,37 @@ function metaLoop($field, $options) {
         array_push($options['options'], $postOptions);
     endforeach;
     wp_reset_postdata();
+    // pass it on to whatever we need to do
+    if($options['secondary_type'] == 'checkbox') :
+        metaCheckbox($field, $options);
+    elseif($options['secondary_type'] == 'dropdown') :
+        metaDropdown($field, $options);
+    elseif($options['secondary_type'] == 'radio') :
+        metaRadio($field, $options);
+    endif;
+}
+
+function metaTerms($field, $options) {
+    /*
+        $term_args = 'type' => 'terms',
+                    'title' => 'Select Related Terms',
+                    'taxonomy' => 'test_type', //taxonomy name
+                    'args' => // any args for get_terms https://codex.wordpress.org/Function_Reference/get_terms
+                    'secondary_type' => 'checkbox',
+                    );
+
+
+        metaField('buttz', $term_args); */
+
+    if(!isset($options['secondary_type'])){$options['secondary_type'] = 'checkbox';}
+    $the_terms = get_terms( $options['taxonomy'], $options['args'] );
+    $options['options'] = array();
+
+    foreach ($the_terms as $the_term) :
+        $termOptions = array('value' => $the_term->term_id, 'description' => $the_term->name);
+        array_push($options['options'], $termOptions);
+    endforeach;
+
     // pass it on to whatever we need to do
     if($options['secondary_type'] == 'checkbox') :
         metaCheckbox($field, $options);
