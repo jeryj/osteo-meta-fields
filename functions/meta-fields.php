@@ -423,6 +423,15 @@ function metaSaveSetup($post_id) {
     }
 }
 
+function metaOptionArraySaveSetup($value) {
+    if(!empty($value)) {
+        // have to return it instead of save it right there
+        return metaSave($value, array('data'=>'option'));
+    } else {
+        return;
+    }
+}
+
 
 /* Could be useful later for saving something FROM a meta field into the options table
     if( isset($_POST['_serviceLogin']) ) {
