@@ -36,6 +36,11 @@ jQuery( document ).ready( function( $ ) {
     });
 
     function showMetaBoxes() {
+        if(meta_boxes.length === 0) {
+            // there are no meta boxes, so don't worry about it
+            // otherwise, it breaks the javascript on all other admin pages
+            return;
+        }
         template = $('#page_template').val();
         template = template.replace('page-templates/', '');
         template = template.replace('.php', '');

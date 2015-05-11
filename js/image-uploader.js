@@ -92,7 +92,7 @@ jQuery( document ).ready( function( $ ) {
                 attachment = attachment.toJSON();
                 if( attachment.id != '' ) {
                     if(attachment.id) {
-                        if(attachment.id == the_chosen_one) {
+                        if(attachment.id == the_chosen_one && multipleOption !== false) {
                             // The chosen one is here! Mark it as such.
                             the_chosen_one_is_here = 1;
                             return '<div class="thumb"><img class="chosen" src="' + attachment.sizes.thumbnail.url + '" id="id-' + attachment.id +'"/>'+removeIcon+'</div>';
@@ -112,7 +112,7 @@ jQuery( document ).ready( function( $ ) {
             }).join(' ');
             $('#'+the_section+' #thumbs').html(attachment_thumbs);
 
-            if(the_chosen_one_is_here === 1) {
+            if(the_chosen_one_is_here === 1 && multipleOption !== false) {
                 // the chose one is here!
             } else {
                 // the chosen one is not here :(  Remove the value from the featured input
@@ -128,15 +128,28 @@ jQuery( document ).ready( function( $ ) {
 
     // Place selected thumbnail ID into custom field to save as featured image
     $(document).on('click', '#thumbs img', function() {
-        if($(this).parent().parent().hasClass('single-image')) {
+        if($(this).parent().parent().parent().hasClass('single-image')) {
             // don't worry about it. There's only one.
         } else {
             var the_section = $(this).parent().parent().parent().attr('id');
             console.log(the_section);
-            $('#' + the_section + ' #thumbs img').removeClass('chosen');
-            var thumb_ID = $(this).attr('id').substring(3);
-            $('#' + the_section + ' .featured_id').val(thumb_ID);
-            $(this).addClass('chosen');
+            if($(this).hasClass('chosen')) {
+                // we're clicking on the one that was already chosen, so let's clear it out
+                $(this).removeClass('chosen');
+                // clear the value
+                $('#' + the_section + ' .featured_id').val('');
+            } else {
+                // remove chosen class from any other chosen one
+                $('#' + the_section + ' #thumbs img').removeClass('chosen');
+                // get the ID to enter it on the featured id field
+                var thumb_ID = $(this).attr('id').substring(3);
+                // set the value
+                $('#' + the_section + ' .featured_id').val(thumb_ID);
+                // add the chosen class
+                $(this).addClass('chosen');
+
+            }
+
         }
     });
 
