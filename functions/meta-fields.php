@@ -10,7 +10,11 @@ function metaField($field, $options = array() ) {
                             'description' => null, // enter a description
                             'type' => 'input', // checkbox, dropdown, select, images, image, editor, loop, terms
                             'class' => null, // pass a class if you want to
-                            'options' => null, // array('value'=>'yes', 'description'=>'Of Course!')
+                            'options' => null, //an array of arrays
+                                                // array(
+                                                //      array('value'=>'yes', 'description'=>'Of Course!'),
+                                                //      array('value'=>'no', 'description'=>'No Way!'),
+                                                //    ),
                                                 // for use with checkboxes, dropdowns, selects
                             'required' => false, // for displaying the red *. still need to define it as required when saving in metaSave()
                             'data' => 'post_meta', // option, term
@@ -143,9 +147,8 @@ function metaRadio($field, $options) {
 function metaCheckbox($field, $options) {
     $checkboxOptions = $options['options'];
     (isset($options['value']) && !empty($options['value']) ? $checkedItems = $options['value'] : $checkedItems = array());
-
     foreach($checkboxOptions as $checkboxOption) {?>
-        <input type="checkbox" name="<?php echo $field;?>[]" value="<?php echo $checkboxOption["value"];?>" <?php echo (in_array($checkboxOption["value"], $checkedItems) ? ' checked="checked"' : '');?>><?php echo $checkboxOption["description"];?><br/>
+        <input type="checkbox" name="<?php echo $field;?>[]" value="<?php echo $checkboxOption["value"];?>"<?php echo (in_array($checkboxOption["value"], $checkedItems) ? ' checked="checked"' : '');?>><?php echo $checkboxOption["description"];?><br/>
     <?php }
 }
 
@@ -263,7 +266,7 @@ function metaImages($field, $options, $single = false) {
         $identifier = $field.'-image';
         $featuredName = $field.'FeaturedIMG';
         $imagesName = $field;
-        $featuredIMG = get_post_meta(get_the_ID(), $field.'FeaturedIMG');
+        $featuredIMG = get_post_meta(get_the_ID(), $field.'FeaturedIMG', true);
     }
     ?>
 
