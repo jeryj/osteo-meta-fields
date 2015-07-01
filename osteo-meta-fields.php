@@ -1,11 +1,10 @@
 <?php
    /*
-   Plugin Name: MP Meta Fields
-   Plugin URI: http://www.messengerpigeons.com
+   Plugin Name: Osteo Meta Fields
    Description: A plugin for easily creating custom meta fields for Wordpress on posts, custom posts, and the wp_options table for site setup
    Version: 1.0
-   Author: Messenger Pigeons
-   Author URI: http://www.messengerpigeons.com
+   Author: Jeremy Jones
+   Author URI: http://jeremyjon.es
    License: GPL2
    */
 

@@ -1,11 +1,8 @@
-  __  __ ___   __  __ ___ _____ _     ___ ___ ___ _    ___  ___
- |  \/  | _ \ |  \/  | __|_   _/_\   | __|_ _| __| |  |   \/ __|
- | |\/| |  _/ | |\/| | _|  | |/ _ \  | _| | || _|| |__| |) \__ \
- |_|  |_|_|   |_|  |_|___| |_/_/ \_\ |_| |___|___|____|___/|___/
+Osteo Meta Fields
+=================
 
+For use with the Osteo starter theme and Osteo Custom Posts plugin.
 
-USAGE
-=====
 
 Creating a meta field
 =====================
@@ -177,16 +174,10 @@ ROADMAP
 
 - DONE 4/17/2015: instead of single-image => true, just make a new field type called image or single image.
 ------ Now it's type => 'image' for single and type => 'images' for multiples
-
 - DONE 4/17/2015: Adding functions for saveOption and optionField like the terms are. A lot better than checking for 'data'=>'option', etc. Annoying syntax.
-
-
 - remove all the single-image i, og-field, etc stuff and just explode the fieldname = $field[i][dataname] into fieldname-i-dataname
-
 - Prefix all fields with ANOTHER array like, 'mp-meta-field[$fieldName]' then on save, we'll just check for any $_POST[mp-meta-field] and then, if there is one, we'll save it. That way we don't have to even add save fields and we might even be able to check for required fields there too. (this would also allow us to just do ONE get request on the post instead of all of them. Meta data might be loaded by default anyways. not sure.
-
 - meta-items.js for terms?
-
 - Look into this whole Classes thing.
 
 
