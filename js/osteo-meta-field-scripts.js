@@ -1,5 +1,5 @@
 /**
- * mp-meta-fields-scripts.js
+ * osteo-meta-fields-scripts.js
  *
  * General site scripts
  */

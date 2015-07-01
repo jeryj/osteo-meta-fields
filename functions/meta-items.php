@@ -121,9 +121,9 @@ function metaItems($field, $options = array()) {
     $options = array_merge($defaultOptions, $options);
     // Noncename needed to verify where the data originated
     wp_nonce_field( basename( __FILE__ ), $field.'_nonce' );
-    wp_enqueue_script( 'mp-meta-items-scripts', plugins_url('mp-meta-fields/js/meta-items.js'), array(), '20120206', true );
+    wp_enqueue_script( 'osteo-meta-items-scripts', plugins_url('osteo-meta-fields/js/meta-items.js'), array(), '20120206', true );
     ?>
-    <div class="<?php echo $field;?> items mp-meta-styles">
+    <div class="<?php echo $field;?> items osteo-meta-styles">
         <?php allItems($field, $options);?>
         <div class="add-item last"><i class="icon-plus-circle"></i></div>
     </div>

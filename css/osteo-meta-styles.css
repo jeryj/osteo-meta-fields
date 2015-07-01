@@ -6,20 +6,20 @@
     margin-top: 10px;
 }
 
-.mp-meta-styles input.widefat,
-.mp-meta-styles .wp-editor-wrap {
+.osteo-meta-styles input.widefat,
+.osteo-meta-styles .wp-editor-wrap {
     margin-bottom: 12px;
 }
 
-.mp-meta-styles input.small-input {
+.osteo-meta-styles input.small-input {
     width: 60px;
 }
 
-.mp-meta-styles input.med-input {
+.osteo-meta-styles input.med-input {
     width: 280px;
 }
 
-#poststuff .mp-meta-styles h2 {
+#poststuff .osteo-meta-styles h2 {
     margin-top: 10px;
     padding: 4px 10px;
     background: #486B76;
@@ -28,8 +28,8 @@
     cursor: pointer;
 }
 
-#poststuff .mp-meta-styles h2.active,
-#poststuff .mp-meta-styles h2:hover {
+#poststuff .osteo-meta-styles h2.active,
+#poststuff .osteo-meta-styles h2:hover {
     background: #6AAABE;
 }
 
@@ -41,7 +41,7 @@
     display: block;
 }
 
-#poststuff .mp-meta-styles h2.no-spacing {
+#poststuff .osteo-meta-styles h2.no-spacing {
     margin-top: 20px;
 }
 
@@ -205,7 +205,7 @@
     display: none;
 }
 
-body .mp-meta-styles .upload_attachments_button {
+body .osteo-meta-styles .upload_attachments_button {
     background: #E7E7E7;
 }
 

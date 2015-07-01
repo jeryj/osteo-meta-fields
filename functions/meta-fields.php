@@ -1,9 +1,9 @@
 <?php
 
 function metaField($field, $options = array() ) {
-    wp_enqueue_style( 'mp-meta-styles', plugins_url('mp-meta-fields/css/mp-meta-styles.css') );
-    wp_enqueue_style( 'mp-meta-icons', plugins_url('mp-meta-fields/icons/style.css') );
-    wp_enqueue_script( 'mp-general-field-scripts', plugins_url('mp-meta-fields/js/mp-meta-field-scripts.js'), array(), '20120206', true );
+    wp_enqueue_style( 'osteo-meta-styles', plugins_url('osteo-meta-fields/css/osteo-meta-styles.css') );
+    wp_enqueue_style( 'osteo-meta-icons', plugins_url('osteo-meta-fields/icons/style.css') );
+    wp_enqueue_script( 'osteo-general-field-scripts', plugins_url('osteo-meta-fields/js/osteo-meta-field-scripts.js'), array(), '20120206', true );
 
     $defaultOptions = array(
                             'title' => null, // title for the field(s)
@@ -215,9 +215,9 @@ function metaTerms($field, $options) {
 }
 
 function metaImages($field, $options, $single = false) {
-    wp_enqueue_style( 'mp-meta-icons', plugins_url('mp-meta-fields/icons/style.css') );
-    wp_enqueue_style( 'mp-meta-styles', plugins_url('mp-meta-fields/css/mp-meta-styles.css') );
-    wp_enqueue_script( 'mp-image-uploader', plugins_url('mp-meta-fields/js/image-uploader.js'), array(), '20120206', true );
+    wp_enqueue_style( 'osteo-meta-icons', plugins_url('osteo-meta-fields/icons/style.css') );
+    wp_enqueue_style( 'osteo-meta-styles', plugins_url('osteo-meta-fields/css/osteo-meta-styles.css') );
+    wp_enqueue_script( 'osteo-image-uploader', plugins_url('osteo-meta-fields/js/image-uploader.js'), array(), '20120206', true );
 
     // see if we're dealing with a single one or not
     if($single == false) {
@@ -256,7 +256,7 @@ function metaImages($field, $options, $single = false) {
         (!empty($options['featured_value']) ? $featuredIMG = $options['featured_value'] : $featuredIMG = '');
     } elseif(isset($options['is_term']) && $options['is_term'] == true) {
         // only include the meta-fields thumbs clear on terms create page
-        (!isset($options['value']) ? wp_enqueue_script( 'mp-meta-fields-ajax', plugins_url('mp-meta-fields/js/ajax-response.js'), array(), '20120206', false ) : '');
+        (!isset($options['value']) ? wp_enqueue_script( 'osteo-meta-fields-ajax', plugins_url('osteo-meta-fields/js/ajax-response.js'), array(), '20120206', false ) : '');
         $identifier = $options['dataname'].'-image';
         $featuredName = 'term_meta['.$options['dataname'].'FeaturedIMG]';
         $imagesName = 'term_meta['.$options['dataname'].']';
@@ -296,7 +296,7 @@ function metaImages($field, $options, $single = false) {
 }
 
 function metaIcon($field, $options) {
-    wp_enqueue_script( 'mp-icon-selector', plugins_url('mp-meta-fields/js/meta-icons.js'), array(), '20120206', true );
+    wp_enqueue_script( 'osteo-icon-selector', plugins_url('osteo-meta-fields/js/meta-icons.js'), array(), '20120206', true );
     wp_enqueue_style( 'current-theme-icons', get_bloginfo('template_directory' ).'/icons/style.css' );
 
     (isset($options['value']) ? $is_selected = $options['value'] : $is_selected ='');

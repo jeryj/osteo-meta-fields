@@ -105,7 +105,7 @@ Output a list of checkboxes containing all post titles from the custom post type
     metaField('featured_services', $featured_services);
 
 
-Save the 'loop' example above to the wp options table. When saving to wp options from a file like in mp-site-setup.php in the mp custom posts plugin, you need to do a little extra work when saving arrays like a checkbox.
+Save the 'loop' example above to the wp options table. When saving to wp options from a file like in osteo-site-setup.php in the osteo custom posts plugin, you need to do a little extra work when saving arrays like a checkbox.
 
     // How to save an array for the loop of checkboxes
     // Add filters for any fields that need extra work before saving
@@ -176,7 +176,7 @@ ROADMAP
 ------ Now it's type => 'image' for single and type => 'images' for multiples
 - DONE 4/17/2015: Adding functions for saveOption and optionField like the terms are. A lot better than checking for 'data'=>'option', etc. Annoying syntax.
 - remove all the single-image i, og-field, etc stuff and just explode the fieldname = $field[i][dataname] into fieldname-i-dataname
-- Prefix all fields with ANOTHER array like, 'mp-meta-field[$fieldName]' then on save, we'll just check for any $_POST[mp-meta-field] and then, if there is one, we'll save it. That way we don't have to even add save fields and we might even be able to check for required fields there too. (this would also allow us to just do ONE get request on the post instead of all of them. Meta data might be loaded by default anyways. not sure.
+- Prefix all fields with ANOTHER array like, 'osteo-meta-field[$fieldName]' then on save, we'll just check for any $_POST[osteo-meta-field] and then, if there is one, we'll save it. That way we don't have to even add save fields and we might even be able to check for required fields there too. (this would also allow us to just do ONE get request on the post instead of all of them. Meta data might be loaded by default anyways. not sure.
 - meta-items.js for terms?
 - Look into this whole Classes thing.
 
